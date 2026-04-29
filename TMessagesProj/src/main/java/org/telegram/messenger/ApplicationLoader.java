@@ -289,6 +289,10 @@ public class ApplicationLoader extends Application {
 
         super.onCreate();
 
+        // TeleKill init
+        org.telegram.telekill.TeleKillConfig.INSTANCE.init(this);
+        org.telegram.telekill.AutoProxyManager.INSTANCE.setupIfNeeded();
+
         if (BuildVars.LOGS_ENABLED) {
             FileLog.d("app start time = " + (startTime = SystemClock.elapsedRealtime()));
             try {
