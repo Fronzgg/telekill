@@ -11,6 +11,8 @@ package org.telegram.messenger;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Application;
+import org.telegram.telekill.TeleKillConfig;
+import org.telegram.telekill.AutoProxyManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -290,8 +292,8 @@ public class ApplicationLoader extends Application {
         super.onCreate();
 
         // TeleKill init
-        org.telegram.telekill.TeleKillConfig.INSTANCE.init(this);
-        org.telegram.telekill.AutoProxyManager.INSTANCE.setupIfNeeded();
+        TeleKillConfig.init(this);
+        AutoProxyManager.setupIfNeeded(this);
 
         if (BuildVars.LOGS_ENABLED) {
             FileLog.d("app start time = " + (startTime = SystemClock.elapsedRealtime()));
